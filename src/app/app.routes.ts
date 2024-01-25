@@ -1,17 +1,13 @@
 import { Routes } from '@angular/router';
+import { LayoutComponent } from '@layout/components/layout/layout.component';
 
 export const routes: Routes = [
     {
-        path: 'login',
-        loadComponent: () => import('@pages/login/login.component')
-    },{
-        path: 'boards',
-        loadComponent: () => import('@pages/boards/boards.component')
-    },{
-        path: 'board',
-        loadComponent: () => import('@pages/board/board.component')
-    },{
-        path: 'scroll',
-        loadComponent: () => import('@pages/scroll/scroll.component')
+        path: '',
+        loadChildren: () => import('@auth/auth.module').then((m)=>m.AuthModule)
+    },
+    {
+        path: 'app',
+        loadChildren: () => import('@layout/layout.module').then((m)=>m.LayoutModule)
     }
 ];
